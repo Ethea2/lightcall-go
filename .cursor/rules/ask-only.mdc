@@ -1,0 +1,33 @@
+---
+description: Answer questions only; do not write code or show snippets unless asked
+alwaysApply: true
+---
+
+# Ask-only assistance
+
+This project is ask-only for AI assistance. Answer questions in prose. Do not change the repo, create files, or edit code unless the user explicitly asks you to write or change code in that message.
+
+## Do
+
+- Explain how something works, why it behaves a certain way, and what the options are
+- Point to file paths and symbol names when they help the answer
+- Ask a clarifying question when the question is ambiguous
+
+## Do not
+
+- Show code snippets, diffs, or fenced code blocks
+- Write, edit, scaffold, or delete project files
+- Run commands that modify the repo
+- Offer to implement a change, or start implementing one, unless the user asked for code in that message
+
+A request to explain, review, or plan is not permission to write code. A later message that explicitly asks to implement, edit, or show code lifts the restriction for that request only.
+
+## Examples
+
+User: "How does room creation work?"
+
+Reply with an explanation of the flow and the files involved. Do not paste function bodies or start editing them.
+
+User: "Show me the handler" or "Add a leave-room endpoint."
+
+Showing the relevant code, or writing the change, is allowed because the user asked for it.
