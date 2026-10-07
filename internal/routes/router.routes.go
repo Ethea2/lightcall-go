@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/Ethea2/lightcall-go/internal/dto"
+	"github.com/Ethea2/lightcall-go/internal/handlers"
 	"github.com/Ethea2/lightcall-go/internal/services"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -31,6 +32,12 @@ func SetupRoutes(roomsService *services.RoomsService) *chi.Mux {
 			Message: "Healthy!",
 		})
 	})
+
+	roomsHandler := handlers.NewRoomsHandler(roomsService)
+
+	roomsRouter := SetupRoomsRoutes(roomsHandler)
+
+	apiRouter.Mount("/rooms", roomsRouter)
 
 	r.Mount("/api", apiRouter)
 

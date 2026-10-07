@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/Ethea2/lightcall-go/internal/rooms"
+	"github.com/Ethea2/lightcall-go/internal/utils"
 )
 
 type RoomsService struct {
@@ -16,8 +17,15 @@ func NewRoomsService(r *rooms.Rooms) *RoomsService {
 	}
 }
 
-func (r *RoomsService) CreateRoom(ctx context.Context) {
+func (r *RoomsService) CreateRoom(ctx context.Context) *rooms.Room {
+	roomID := utils.GenerateRoomID()
+	newRoom := r.rooms.CreateRoom(roomID)
 
+	return newRoom
+}
+
+func (r *RoomsService) CheckAvailableRooms(ctx context.Context) []string {
+	return r.rooms.CheckAvailableRooms()
 }
 
 func (r *RoomsService) JoinRoom(ctx context.Context) {

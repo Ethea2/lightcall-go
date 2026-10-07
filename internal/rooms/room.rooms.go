@@ -1,6 +1,7 @@
 package rooms
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/pion/webrtc/v4"
@@ -60,4 +61,14 @@ func (rs *Rooms) CreateRoom(generatedID string) *Room {
 	rs.Rooms[generatedID] = room
 	rs.mu.Unlock()
 	return room
+}
+
+func (rs *Rooms) CheckAvailableRooms() []string {
+	var roomIDs []string
+	for i, val := range rs.Rooms {
+		fmt.Printf("\n%s : %s", i, val.RoomID)
+		roomIDs = append(roomIDs, val.RoomID)
+	}
+
+	return roomIDs
 }
