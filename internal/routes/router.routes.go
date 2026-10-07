@@ -5,12 +5,13 @@ import (
 	"net/http"
 
 	"github.com/Ethea2/lightcall-go/internal/dto"
+	"github.com/Ethea2/lightcall-go/internal/services"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 )
 
-func SetupRoutes() *chi.Mux {
+func SetupRoutes(roomsService *services.RoomsService) *chi.Mux {
 	r := chi.NewRouter()
 
 	r.Use(middleware.Logger)

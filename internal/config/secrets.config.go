@@ -8,10 +8,9 @@ import (
 )
 
 type Config struct {
-	Port string
+	Port       string
+	StunServer string
 }
-
-var ConfigInstance Config
 
 func NewConfig() *Config {
 	if err := godotenv.Load(); err != nil {
@@ -19,6 +18,7 @@ func NewConfig() *Config {
 	}
 
 	return &Config{
-		Port: os.Getenv("PORT"),
+		Port:       os.Getenv("PORT"),
+		StunServer: os.Getenv("STUN_SERVER"),
 	}
 }
